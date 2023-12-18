@@ -36,3 +36,7 @@ pip install openai (openai 버전에 따라서 다운그레이드 하여야 할 
 
 pip install beautifulsoup4
 
+pip install whitenoise
+
+
+
