@@ -1,0 +1,74 @@
+{% extends "bob/header.html" %}
+
+
+
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'web/css/board_view.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@600&display=swap" rel="stylesheet">
+
+
+<style>
+    hr {
+      border: 1px solid #000; /* 실선 스타일을 사용하고 실선 색상을 설정합니다. */
+      margin: 10px 0; /* 위아래 여백을 조절합니다. */
+    }
+  </style>
+
+  <br><br><br><br>
+<div class="board-form">
+    <form >
+        {% csrf_token %}
+
+        {% if record %}
+        '{{ record.0.web_id }}' 님의 게시글
+            <label for="title"><h1>{{ record.0.title }}</h1><h5>{{ record.0.filed }}</h5></label>
+
+            <label for="text">{{ record.0.text }}</label>
+            <hr>
+            {% endif %}
+    </form>
+
+
+    
+</div>
+
+
+
+
+<br>
+<form action="" method="post">
+    {% csrf_token %}
+<div class="answer">
+    <div class="card">
+      <!-- <div class="chat-header">댓글</div> -->
+        <div class="chat-input">
+            <input type="text" class="message-input" name="answer" placeholder="Type your message here">
+            <input type="text" name="hash256" hidden value="{{record.0.hash256}}">
+
+            <button class="send-button">답변하기</button>
+        </div>
+      </div>
+  </div>    
+</form>    
+
+
+
+{% load custom_filters %}
+
+{% for answer in answers|reverse_list %}
+<br>
+<div class="board-form">
+    <form>
+        {% csrf_token %}
+        {{answer.created_at}}<br><br>
+        '{{ answer.answer_id }}' 님의 답변 
+        <label for="text">{{ answer.answer }}</label>
+        <hr>
+    </form>
+</div>
+{% endfor %}
+{% endblock %}

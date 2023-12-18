@@ -1,0 +1,215 @@
+{% extends "bob/header.html" %}
+
+
+
+
+{% block content %}
+
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'web/css/exe2.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@600&display=swap" rel="stylesheet">
+
+
+
+<br><br><br>
+
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Find the button by its id
+    var openWindowButton = document.getElementById('openWindowButton');
+
+    // Add a click event listener to the button
+    openWindowButton.addEventListener('click', function () {
+      // Define the URL you want to open in the popup window
+      var urlToOpen = ''; // Replace with your desired URL
+
+      // Define the dimensions of the popup window
+      var width = 900; // Width of the window in pixels
+      var height = 600; // Height of the window in pixels
+
+      // Calculate the position of the popup window to center it on the screen
+      var left = (window.innerWidth - width) / 2;
+      var top = (window.innerHeight - height) / 2;
+
+      // Use window.open() to open the popup window with specified dimensions and position
+      var popupWindow = window.open(urlToOpen, 'PopupWindow', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
+
+      // Focus the popup window (optional)
+      if (popupWindow) {
+        popupWindow.focus();
+      }
+    });
+  });
+</script>
+
+
+<style>
+  .margin-right{
+  margin-right: 120px;
+  }
+
+  .margin-left{
+    margin-left: 120px;
+  }
+</style>
+
+<div class="card margin-left margin-right">
+  <div class="header">
+    <span class="icon">
+
+    </span>
+    <p class="alert"><h5>{{file}} </h5></p>
+
+
+    <div class="checkbox-wrapper-35">
+      <input value="private" name="switch" id="switch" type="checkbox" class="switch">
+   
+        <div class="os">
+          <button id="openVirtualButton">
+            가상화 os
+          </button>
+        </div>
+        </div>
+해시값 : {% for sha256_value in pro_val %}{{ sha256_value }}{% endfor %}
+      </label>
+
+    </div>
+    <script>
+      document.getElementById('openVirtualButton').addEventListener('click', function() {
+        var fileValue = "{{ file }}";
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/virtualize/?file=' + encodeURIComponent(fileValue), true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    // 서버 응답을 받았을 때의 로직을 작성
+                    console.log('Virtualize 함수가 성공적으로 실행되었습니다.');
+    
+                    // 서버에서 전송한 파일 데이터를 블롭으로 생성
+                    var blob = new Blob([xhr.response], { type: 'application/octet-stream' });
+    
+                    // 브라우저에서 파일 다운로드를 위한 링크 생성
+                    var link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = 'pve-spice.vv';
+    
+                    // 링크를 클릭하여 파일 다운로드
+                    link.click();
+                } else {
+                    // 오류 처리
+                    console.error('Virtualize 함수 실행 중 오류가 발생했습니다.');
+                }
+            }
+        };
+      xhr.responseType = 'arraybuffer';  // 이 부분이 추가되어야 합니다.
+      xhr.send();
+    });
+    </script>
+
+  
+  </div>
+
+
+
+</div>
+
+<div class="card2 margin-left margin-right">
+  <div class="contentg">
+ 
+
+
+<!-- 내용이 들어가는 곳 -->
+
+
+
+
+<style>
+  /* iframe을 선택하고 테두리 스타일을 none(없음)으로 설정합니다. */
+  iframe {
+      border: none;
+  }
+</style>
+
+
+
+
+
+<!-- 목차 -->
+<!-- 목차 -->
+
+ {% for exe in records_with %}
+ 
+ {% if exe.name in problem_with %} 
+<div class="info" style="background-color: #D5DCFF;">
+
+  <div class="info__title">
+      <details>
+        <summary> {{ exe.name }} </summary>
+        <div class="card3">
+          <br>
+       <!-- 정답 제출 -->
+       <form action="/exe_answer/" method="post" style="margin-left: 15px;">
+          {% csrf_token %}
+          {{ exe.markdown | safe }}
+          <br>
+          <div class="submit">
+            <div class="search">
+                <input placeholder="문제의 답을 작성해주세요" type="text" name="answer">
+                <input type="hidden" name="problem_name" value="{{ exe.name }}">
+                <input type="hidden" name="problem_location" value="{{ file }}">
+                <button type="submit">제출하기</button>
+              </div>
+          </div>
+        </form>
+    </details>
+  
+  </div>
+</div>
+{% else %}
+<div class="info">
+
+  <div class="info__title">
+      <details>
+        <summary> {{ exe.name }} </summary>
+        <div class="card3">
+          <br>
+       <!-- 정답 제출 -->
+       <form action="/exe_answer/" method="post" style="margin-left: 15px;">
+          {% csrf_token %}
+          {{ exe.markdown | safe }}
+          <br>
+          <div class="submit">
+            <div class="search">
+                <input placeholder="문제의 답을 작성해주세요" type="text" name="answer">
+                <input type="hidden" name="problem_name" value="{{ exe.name }}">
+                <input type="hidden" name="problem_location" value="{{ file }}">
+                <button type="submit">제출하기</button>
+              </div>
+          </div>
+        </form>
+    </details>
+  
+  </div>
+</div>
+
+{% endif %}
+
+{% endfor %}
+
+<br>
+
+
+
+
+
+
+
+
+
+{% endblock %}

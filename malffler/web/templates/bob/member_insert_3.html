@@ -1,0 +1,136 @@
+{% extends "bob/header.html" %}
+
+
+
+
+
+{% block content %}
+
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'web/css/member_insert_3.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@600&display=swap" rel="stylesheet">
+
+<script>
+  // body 요소를 가져옵니다.
+  const bodyElement = document.body;
+
+  // body 요소에 클릭 이벤트 리스너를 추가합니다.
+  bodyElement.addEventListener("click", function() {
+    // 이동할 페이지의 URL을 설정합니다.
+    const destinationURL = "{% url 'home' %}"; // 'your_view_name'은 Django 뷰의 이름입니다.
+
+    // 페이지를 이동합니다.
+    window.location.href = destinationURL;
+  });
+</script>
+<body style="background-color: #D7DAE7;">
+  <div class="middle">
+    <h1 style="color: black;">회원가입</h1>
+    </div>
+    <div class="radio-input">
+      
+      <label>
+      <input type="radio" id="value-1" name="value-radio" value="value-1"  disabled>
+      <span>이용약관</span>
+      </label>
+      <label>
+        <input type="radio" id="value-2" name="value-radio" value="value-2"  disabled>
+      <span>회원가입</span>
+      </label>
+      <label>
+        <input type="radio" id="value-3" name="value-radio" value="value-3" disabled checked>
+      <span>가입완료</span>
+      </label>
+      <span class="selection"></span>
+    </div>
+    
+    
+    
+    
+    
+    
+    <div class="results-summary-container">
+      <div class="confetti">
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+      </div>
+      <div class="results-summary-container__result">
+        <div class="result-text-box">
+          <div class="heading-secondary">가입을 축하합니다!</div>
+          <p class="paragraph">
+          MalFFleR에 가입해주셔서 감사합니다.<br>
+          저희 사이트에서 유익한 시간되시기 바랍니다!
+          </p>   
+          <div class="text">
+            <div class="icon-box" >
+                <span class="span" id="login" >로그인하기</span>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+      </div>
+      
+      
+    </div>
+    
+    </div>
+     
+    <script>
+    // Modal Image Gallery
+    function onClick(element) {
+      document.getElementById("img01").src = element.src;
+      document.getElementById("modal01").style.display = "block";
+      var captionText = document.getElementById("caption");
+      captionText.innerHTML = element.alt;
+    }
+    
+    
+    // Toggle between showing and hiding the sidebar when clicking the menu icon
+    var mySidebar = document.getElementById("mySidebar");
+    
+    function w3_open() {
+      if (mySidebar.style.display === 'block') {
+        mySidebar.style.display = 'none';
+      } else {
+        mySidebar.style.display = 'block';
+      }
+    }
+    
+    // Close the sidebar with the close button
+    function w3_close() {
+        mySidebar.style.display = "none";
+    }
+    const loginSpan = document.getElementById("login");
+    
+    loginSpan.addEventListener("click", function () {
+        // 이동할 페이지의 URL을 설정합니다.
+        const destinationURL = "{% url 'home' %}"; // 'your_view_name'은 Django 뷰의 이름입니다.
+    
+        // 페이지를 이동합니다.
+        window.location.href = destinationURL;
+    });
+    </script>
+  </body>
+
+{% endblock %}
