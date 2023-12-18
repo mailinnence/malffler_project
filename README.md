@@ -23,8 +23,7 @@
 
 추가로 필요한 기능(회원탈퇴 , 게시글 및 댓글 삭제 기능)
 
-보안 (디장고에서 제공하는 기본 보안기능 - XSS , CSRF , SQL Injection , Clickjacking  + 특수문자 방지 , 주요정보 해시값처리 , 쿼리값 암호화)
-
+보안 (디장고에서 제공하는 기본 보안기능 - XSS , CSRF , SQL Injection , Clickjacking  + 특수문자 방지 , 주요정보 해시값처리)
 
 
 
