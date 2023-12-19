@@ -83,7 +83,6 @@ path('board_write/', views.board_write, name='board_write'),
 
 # 게시판 뷰
 path('board_view/',views.board_view),
-path('board_view/?web_id=<str:web_id>&title=<str:title>&text=<str:text>',views.board_view),
 
 # 답변
 path('board_answer_save/',views.board_answer_save ),
