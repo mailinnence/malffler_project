@@ -873,13 +873,6 @@ def board_answer_save(request):
 
 
 
-def cookie_reset(request):
-    request.session.flush()
-    response = HttpResponse("Cookie Cleared")
-    response.delete_cookie('cookie_name')
-    return render(request, 'bob/board.html')
-
-
 
 
 
