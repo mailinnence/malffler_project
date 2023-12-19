@@ -15,9 +15,6 @@ from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404
 import proxmoxer
 
-# 암호화
-from Crypto.Cipher import AES
-from Crypto.Hash import SHA256 as SHA
 import sys
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
