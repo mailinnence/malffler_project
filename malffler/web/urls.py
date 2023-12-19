@@ -91,15 +91,6 @@ path('board_answer_save/',views.board_answer_save ),
 
 
 
-
-### 쿠키
-
-path('cookie_reset/',views.cookie_reset),
-
-
-
-
-
 path('핵심원리 문제풀이1/',views.vi_api_num1),
 
 
