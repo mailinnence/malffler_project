@@ -1,0 +1,112 @@
+{% extends "bob/header.html" %}
+
+
+
+
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'web/css/member_info_change.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'web/css/footer.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@600&display=swap" rel="stylesheet">
+
+<div id="wrapper">
+<div style="margin-top: 150px;"></div>
+<div class="middle" >
+  <h1>회원정보 수정</h1>
+  </div>
+  
+  
+  
+  <form class="form" method="post" action="{% url 'info_change_logic'%}">
+    {% csrf_token %}
+    <p class="title" >회원정보 수정 </p>
+    <p class="message">비밀번호 변경</p>
+  
+    <label>
+        <input required="" name="past_password" placeholder="" type="text" class="input">
+        <span>현재 비밀번호를 입력해주세요</span>
+    </label>
+  
+    <label>
+      <input required="" name="new_password" placeholder="" type="password" class="input">
+      <span>바꿀 비밀번호를 입력해주세요</span>
+  </label>
+  
+  
+    <label>
+      <input required="" name="new_password_confirm" placeholder="" type="password" class="input">
+      <span>바꿀 비밀번호를 확인해주세요</span>
+    </label>
+
+    {% if messages %}
+    <div id="error-messages">
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+  {% endif %}
+  <button class="submit">변경하기</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+  
+  <script>
+  // Modal Image Gallery
+  function onClick(element) {
+    document.getElementById("img01").src = element.src;
+    document.getElementById("modal01").style.display = "block";
+    var captionText = document.getElementById("caption");
+    captionText.innerHTML = element.alt;
+  }
+  
+  
+  // Toggle between showing and hiding the sidebar when clicking the menu icon
+  var mySidebar = document.getElementById("mySidebar");
+  
+  function w3_open() {
+    if (mySidebar.style.display === 'block') {
+      mySidebar.style.display = 'none';
+    } else {
+      mySidebar.style.display = 'block';
+    }
+  }
+  
+  // Close the sidebar with the close button
+  function w3_close() {
+      mySidebar.style.display = "none";
+  }
+  </script>
+</body>
+</div>
+</div>
+
+<footer class="footer" style="position: relative; transform: translateY(-100%);">
+  <div style="background-color: black;">
+    <div class="footer_bottom">
+      <div class="footer-logo">
+        <img src="{% static 'LOGO_remove.png' %}" style="max-width: 10rem;  opacity: 0.5;">
+      </div>
+      <div class="company-miscellaneous">
+        <div class="company-brand-title">
+          <p class="company-title">Best Of the Best 12기</p> 
+          <p class="copyright">
+        Copyright © 2023 MalLaB Inc. All rights reserved.
+          </p>
+        </div> 
+        <p class="copyright">
+          <span>서비스 운영: MalLaB</span> |
+          <span>금천구 서부샛길 606, 대성디폴리스 지식산업센터 A동 27층</span> |
+          <span>이메일: mallab@gmail.com</span> |
+          <span>대표 연락처: 010-0000-0000</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+{% endblock %}
+

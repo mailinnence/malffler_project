@@ -1,0 +1,724 @@
+v{% extends "bob/header.html" %}
+
+
+
+
+
+{% block content %}
+
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'web/css/lecture.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'web/css/footer.css' %}">
+
+<div id="wrapper">
+<div class="radio-input">
+</div>
+
+<script>
+  // 라디오 버튼의 변경을 감지하는 이벤트 리스너 추가
+  document.querySelectorAll('input[name="value-radio"]').forEach(function(radio) {
+      radio.addEventListener('change', function() {
+          // 선택한 라디오 버튼의 값에 따라 다른 주소로 이동
+          if (radio.value === "value-1") {
+              window.location.href = "/education0"; 
+          } else if (radio.value === "value-2") {
+              window.location.href = "/education1";
+          } else if (radio.value === "value-3") {
+              window.location.href = "/education2"; 
+          }
+          else if (radio.value === "value-4") {
+              window.location.href = "/education3"; // 제작 교육 페이지로 이동
+          }
+      });
+  });
+</script>
+  
+  
+  
+  
+  
+  
+  <div class="card">
+      <p style="font-weight: 900; font-size: 20px; padding-left: 20px;">⚠️ 경고</p>
+      <p class="alert" style="padding-left: 20px;">MalFFleR는 합법적인 보안 연구 및 교육 목적으로만 사용되어야 합니다.</p><p class="alert" style="padding-left: 20px">악의적인 목적으로 이를 활용하거나 다른 사람에게 피해를 주려는 행위는 불법이며 정보통신망법 48조에 의거하여 적절한 법적 처벌을 받을 수 있습니다.</p>
+  </div>
+  
+  
+  
+  <div class="coulmn">
+    <div class="coulmn_item1">
+  
+  <div class="card2">
+    <!-- <div class="info2">
+  
+      <div class="info__title">윤리교육</div>
+      <div class="info__close"></div>
+  
+      
+  </div> -->
+
+
+  
+
+  
+<!--  -->
+   <div class="main_category_f" style="background-color: {{color}};">
+    기초 개념 
+  </div>
+  {% if '컴퓨터 프로그램의 이해' in progress_values and '프로그래밍 환경 구축' in progress_values and '윈도우 API 프로그래밍' in progress_values %}
+      <div class="info2" style="width: 100%; background-color: {{color}};">
+    <div class="info__title" style="padding:3px;">
+        
+      <details>
+            <summary>핵심원리 기초</summary>
+            <ul>
+                
+              {% if '컴퓨터 프로그램의 이해' in progress_values %}
+              <ul class="indented"><a href="lecture2/?table=컴퓨터 프로그램의 이해&page=1" class="text_change">컴퓨터 프로그램의 이해 ☑️</a></ul>
+            {% else %}
+              <ul class="indented"><a href="lecture2/?table=컴퓨터 프로그램의 이해&page=1" class="text_change">컴퓨터 프로그램의 이해</a></ul>
+            {% endif %}
+            
+            {% if '프로그래밍 환경 구축' in progress_values %}
+              <ul class="indented"><a href="lecture2/?table=프로그래밍 환경 구축&page=1" class="text_change">프로그래밍 환경 구축 ☑️</a></ul>
+            {% else %}
+              <ul class="indented"><a href="lecture2/?table=프로그래밍 환경 구축&page=1" class="text_change">프로그래밍 환경 구축</a></ul>
+            {% endif %}
+            
+            {% if '윈도우 API 프로그래밍' in progress_values %}
+              <ul class="indented"><a href="lecture2/?table=윈도우 API 프로그래밍&page=1" class="text_change">윈도우 API 프로그래밍 ☑️</a></ul>
+            {% else %}
+              <ul class="indented"><a href="lecture2/?table=윈도우 API 프로그래밍&page=1" class="text_change">윈도우 API 프로그래밍</a></ul>
+            {% endif %}
+            
+                
+            </ul>
+        </details>
+    </div>
+</div>
+
+
+
+  {% else %}
+  <div class="info2" style="width: 100%;">
+      <div class="info__title" style="padding:3px;">
+          
+        <details>
+              <summary>핵심원리 기초</summary>
+              <ul>
+                  
+                {% if '컴퓨터 프로그램의 이해' in progress_values %}
+                <ul class="indented"><a href="lecture2/?table=컴퓨터 프로그램의 이해&page=1" class="text_change">컴퓨터 프로그램의 이해 ☑️</a></ul>
+              {% else %}
+                <ul class="indented"><a href="lecture2/?table=컴퓨터 프로그램의 이해&page=1" class="text_change">컴퓨터 프로그램의 이해</a></ul>
+              {% endif %}
+              
+              {% if '프로그래밍 환경 구축' in progress_values %}
+                <ul class="indented"><a href="lecture2/?table=프로그래밍 환경 구축&page=1" class="text_change">프로그래밍 환경 구축 ☑️</a></ul>
+              {% else %}
+                <ul class="indented"><a href="lecture2/?table=프로그래밍 환경 구축&page=1" class="text_change">프로그래밍 환경 구축</a></ul>
+              {% endif %}
+              
+              {% if '윈도우 API 프로그래밍' in progress_values %}
+                <ul class="indented"><a href="lecture2/?table=윈도우 API 프로그래밍&page=1" class="text_change">윈도우 API 프로그래밍 ☑️</a></ul>
+              {% else %}
+                <ul class="indented"><a href="lecture2/?table=윈도우 API 프로그래밍&page=1" class="text_change">윈도우 API 프로그래밍</a></ul>
+              {% endif %}
+              
+                  
+              </ul>
+          </details>
+      </div>
+  </div>
+  {% endif %}
+
+  
+
+
+
+<!--  -->
+  
+   <div class="main_category_f" style="margin-top : 20px; background-color: {{color}};">
+    Anti-Analysis 
+  </div>
+
+  {% if '레지스트리 값 확인하여 VM 탐지' in progress_values %}
+  <div class="info2" style="width: 100%; background-color: {{color}};">
+    <div class="info__title" style="padding: 3px;">
+      <details>
+        <summary>안티 VM 샌드박스</summary>
+        <ul>
+          <ul class="indented">
+
+
+          {% if '레지스트리 값 확인하여 VM 탐지' in progress_values %}
+            <a href="lecture2/?table=레지스트리 값 확인하여 VM 탐지&page=1" class="text_change">레지스트리 값 확인하여 VM 탐지 ☑️</a>
+          {% else %}
+            <a href="lecture2/?table=레지스트리 값 확인하여 VM 탐지&page=1" class="text_change">레지스트리 값 확인하여 VM 탐지</a>
+          {% endif %}
+
+
+              </ul>
+        </ul>
+      </details>
+    </div>
+  </div>
+  {% else %}
+  <div class="info2" style="width: 100%;">
+      <div class="info__title" style="padding:3px;">
+          
+        <details>
+              <summary>안티 VM 샌드박스</summary>
+              <ul>
+                <ul class="indented">
+                {% if '레지스트리 값 확인하여 VM 탐지' in progress_values %}
+                <a href="lecture2/?table=레지스트리 값 확인하여 VM 탐지&page=1" class="text_change">레지스트리 값 확인하여 VM 탐지 ☑️</a>
+              {% else %}
+                <a href="lecture2/?table=레지스트리 값 확인하여 VM 탐지&page=1" class="text_change">레지스트리 값 확인하여 VM 탐지</a>
+              {% endif %}
+            </ul>
+              </ul>
+          </details>
+      </div>
+  </div>
+  {% endif %}
+  
+
+   <!--  -->
+
+
+  {% if 'IsDebuggerPresent' in progress_values %}
+  <div class="info2" style="width: 100%; background-color: {{color}};">
+    <div class="info__title" style="padding: 3px;">
+      <details>
+        <summary>안티 디버깅</summary>
+        <ul>
+          <ul class="indented">
+
+            {% if 'IsDebuggerPresent' in progress_values %}
+            <a href="lecture2/?table=IsDebuggerPresent&page=1" class="text_change">IsDebuggerPresent ☑️</a>
+          {% else %}
+            <a href="lecture2/?table=IsDebuggerPresent&page=1" class="text_change">IsDebuggerPresent</a>
+          {% endif %}
+          
+          </ul>
+
+        </ul>
+      </details>
+    </div>
+  </div>
+{% else %}
+  <div class="info2" style="width: 100%;">
+    <div class="info__title" style="padding: 3px;">
+      <details>
+        <summary>안티 디버깅</summary>
+        <ul>
+          <ul class="indented">
+            {% if 'IsDebuggerPresent' in progress_values %}
+            <a href="lecture2/?table=IsDebuggerPresent&page=1" class="text_change">IsDebuggerPresent ☑️</a>
+          {% else %}
+            <a href="lecture2/?table=IsDebuggerPresent&page=1" class="text_change">IsDebuggerPresent</a>
+          {% endif %}
+          
+          </ul>
+        </ul>
+      </details>
+    </div>
+  </div>
+{% endif %}
+
+  
+
+  <!--  --> 
+   <div class="main_category_f" style="margin-top : 20px; background-color: {{color}};">
+    흔적 제거 기법   
+  </div>
+
+  {% if '이벤트로그 삭제' in progress_values and '레지스트리 값 삭제' in progress_values and '자가 삭제' in progress_values %}
+  <div class="info2" style="width: 100%; background-color: {{color}};">
+      <div class="info__title" style="padding:3px;">
+          
+        <details>
+              <summary>흔적 제거 기법</summary>
+              <ul>
+                  
+                {% if '이벤트로그 삭제' in progress_values %}
+                <ul class="indented"><a href="lecture2/?table=이벤트로그 삭제&page=1" class="text_change">이벤트로그 삭제 ☑️</a></ul>
+              {% else %}
+                <ul class="indented"><a href="lecture2/?table=이벤트로그 삭제&page=1" class="text_change">이벤트로그 삭제</a></ul>
+              {% endif %}
+              
+              {% if '레지스트리 값 삭제' in progress_values %}
+                <ul class="indented"><a href="lecture2/?table=레지스트리 값 삭제&page=1" class="text_change">레지스트리 값 삭제 ☑️</a></ul>
+              {% else %}
+                <ul class="indented"><a href="lecture2/?table=레지스트리 값 삭제&page=1" class="text_change">레지스트리 값 삭제</a></ul>
+              {% endif %}
+              </ul>
+          </details>
+      </div>
+  </div>
+  {% else %}
+  <div class="info2" style="width: 100%;">
+    <div class="info__title" style="padding:3px;">
+        
+      <details>
+            <summary>흔적 제거 기법</summary>
+            <ul>
+                
+              {% if '이벤트로그 삭제' in progress_values %}
+              <ul class="indented"><a href="lecture2/?table=이벤트로그 삭제&page=1" class="text_change">이벤트로그 삭제 ☑️</a></ul>
+            {% else %}
+              <ul class="indented"><a href="lecture2/?table=이벤트로그 삭제&page=1" class="text_change">이벤트로그 삭제</a></ul>
+            {% endif %}
+            
+            {% if '레지스트리 값 삭제' in progress_values %}
+              <ul class="indented"><a href="lecture2/?table=레지스트리 값 삭제&page=1" class="text_change">레지스트리 값 삭제 ☑️</a></ul>
+            {% else %}
+              <ul class="indented"><a href="lecture2/?table=레지스트리 값 삭제&page=1" class="text_change">레지스트리 값 삭제</a></ul>
+            {% endif %}
+            
+            {% if '자가 삭제' in progress_values %}
+              <ul class="indented"><a href="lecture2/?table=자가 삭제&page=1" class="text_change">자가 삭제 ☑️</a></ul>
+            {% else %}
+              <ul class="indented"><a href="lecture2/?table=자가 삭제&page=1" class="text_change">자가 삭제</a></ul>
+            {% endif %}
+            </ul>
+        </details>
+    </div>
+</div>
+
+  {% endif %}
+
+
+<!--  -->
+  {% if '서비스 등록' in progress_values and '레지스트리 등록' in progress_values and '작업 스케줄러 등록' in progress_values %}
+  <div class="info2" style="width: 100%; background-color: {{ color }};">
+    <div class="info__title" style="padding: 3px;">
+      <details>
+        <summary>지속 기법</summary>
+        <ul>
+          {% if '서비스 등록' in progress_values %}
+          <ul class="indented"><a href="lecture2/?table=서비스 등록&page=1" class="text_change">서비스 등록 ☑️</a></ul>
+        {% else %}
+          <ul class="indented"><a href="lecture2/?table=서비스 등록&page=1" class="text_change">서비스 등록</a></ul>
+        {% endif %}
+        
+        {% if '레지스트리 등록' in progress_values %}
+          <ul class="indented"><a href="lecture2/?table=레지스트리 등록&page=1" class="text_change">레지스트리 등록 ☑️</a></ul>
+        {% else %}
+          <ul class="indented"><a href="lecture2/?table=레지스트리 등록&page=1" class="text_change">레지스트리 등록</a></ul>
+        {% endif %}
+        
+        {% if '작업 스케줄러 등록' in progress_values %}
+          <ul class="indented"><a href="lecture2/?table=작업 스케줄러 등록&page=1" class="text_change">작업 스케줄러 등록 ☑️</a></ul>
+        {% else %}
+          <ul class="indented"><a href="lecture2/?table=작업 스케줄러 등록&page=1" class="text_change">작업 스케줄러 등록</a></ul>
+        {% endif %}
+           </ul>
+      </details>
+    </div>
+  </div>
+{% else %}
+  <div class="info2" style="width: 100%;">
+    <div class="info__title" style="padding: 3px;">
+      <details>
+        <summary>지속 기법</summary>
+        <ul>
+       
+   
+   
+          {% if '서비스 등록' in progress_values %}
+          <ul class="indented"><a href="lecture2/?table=서비스 등록&page=1" class="text_change">서비스 등록 ☑️</a></ul>
+        {% else %}
+          <ul class="indented"><a href="lecture2/?table=서비스 등록&page=1" class="text_change">서비스 등록</a></ul>
+        {% endif %}
+        
+        {% if '레지스트리 등록' in progress_values %}
+          <ul class="indented"><a href="lecture2/?table=레지스트리 등록&page=1" class="text_change">레지스트리 등록 ☑️</a></ul>
+        {% else %}
+          <ul class="indented"><a href="lecture2/?table=레지스트리 등록&page=1" class="text_change">레지스트리 등록</a></ul>
+        {% endif %}
+        
+        {% if '작업 스케줄러 등록' in progress_values %}
+          <ul class="indented"><a href="lecture2/?table=작업 스케줄러 등록&page=1" class="text_change">작업 스케줄러 등록 ☑️</a></ul>
+        {% else %}
+          <ul class="indented"><a href="lecture2/?table=작업 스케줄러 등록&page=1" class="text_change">작업 스케줄러 등록</a></ul>
+        {% endif %}
+        
+        </ul>
+      </details>
+    </div>
+  </div>
+{% endif %}
+
+  
+
+   <!--  -->
+
+
+{% if 'XOR 암호화' in progress_values %}
+  <div class="info2" style="width: 100%; background-color: {{ color }};">
+    <div class="info__title" style="padding: 3px;">
+      <details>
+        <summary>암호화 기법</summary>
+        <ul>
+          {% if 'XOR 암호화' in progress_values %}
+          <ul class="indented"><a href="lecture2/?table=XOR 암호화&page=1" class="text_change">XOR 암호화 ☑️</a></ul>
+        {% else %}
+          <ul class="indented"><a href="lecture2/?table=XOR 암호화&page=1" class="text_change">XOR 암호화</a></ul>
+        {% endif %}
+        
+        </ul>
+      </details>
+    </div>
+  </div>
+{% else %}
+  <div class="info2" style="width: 100%;">
+    <div class="info__title" style="padding: 3px;">
+      <details>
+        <summary>암호화 기법</summary>
+        <ul>
+          {% if 'XOR 암호화' in progress_values %}
+          <ul class="indented"><a href="lecture2/?table=XOR 암호화&page=1" class="text_change">XOR 암호화 ☑️</a></ul>
+        {% else %}
+          <ul class="indented"><a href="lecture2/?table=XOR 암호화&page=1" class="text_change">XOR 암호화</a></ul>
+        {% endif %}
+        
+        </ul>
+      </details>
+    </div>
+  </div>
+{% endif %}
+
+
+
+<!--  -->
+   
+
+{% if 'MBR 파괴' in progress_values and 'cipher를 이용한 데이터 파괴' in progress_values %}
+  <div class="info2" style="width: 100%; background-color: {{ color }};">
+    <div class="info__title" style="padding: 3px;">
+      <details>
+        <summary>데이터 파괴</summary>
+        <ul>
+          {% if 'MBR 파괴' in progress_values %}
+          <ul class="indented"><a href="lecture2/?table=MBR 파괴&page=1" class="text_change">MBR 파괴 ☑️</a></ul>
+        {% else %}
+          <ul class="indented"><a href="lecture2/?table=MBR 파괴&page=1" class="text_change">MBR 파괴</a></ul>
+        {% endif %}
+	 {% if 'cipher를 이용한 데이터 파괴(' in progress_values %}
+           <ul class="indented"><a href="lecture2/?table=cipher를 이용한 데이터 파괴&page=1" class="text_change">cipher를 이용한 데이터 파괴 ☑️</a></ul>
+         {% else %}
+           <ul class="indented"><a href="lecture2/?table=cipher를 이용한 데이터 파괴&page=1" class="text_change">cipher를 이용한 데이터 파괴</a></ul>
+         {% endif %}
+        </ul>
+      </details>
+    </div>
+  </div>
+{% else %}
+  <div class="info2" style="width: 100%;">
+    <div class="info__title" style="padding: 3px;">
+      <details>
+        <summary>데이터 파괴</summary>
+        <ul>
+          {% if 'MBR 파괴' in progress_values %}
+            <ul class="indented"><a href="lecture2/?table=MBR 파괴&page=1" class="text_change">MBR 파괴 ☑️</a></ul>
+          {% else %}
+            <ul class="indented"><a href="lecture2/?table=MBR 파괴&page=1" class="text_change">MBR 파괴</a></ul>
+          {% endif %}
+	 {% if 'cipher를 이용한 데이터 파괴(' in progress_values %}
+            <ul class="indented"><a href="lecture2/?table=cipher를 이용한 데이터 파괴&page=1" class="text_change">cipher를 이용한 데이터 파괴 ☑️</a></ul>
+          {% else %}
+            <ul class="indented"><a href="lecture2/?table=cipher를 이용한 데이터 파괴&page=1" class="text_change">cipher를 이용한 데이터 파괴</a></ul>
+          {% endif %}
+        </ul>
+      </details>
+    </div>
+  </div>
+{% endif %}
+
+  
+
+  
+  <div class="main_category_f" style="margin-top : 20px; background-color: {{color}};">
+    인젝션/후킹    
+  </div>
+
+   <!--  -->
+
+
+   {% if '키로깅' in progress_values %}
+   <div class="info2" style="width: 100%; background-color: {{ color }};">
+     <div class="info__title" style="padding: 3px;">
+       <details>
+         <summary>후킹 기법</summary>
+         <ul>
+          {% if '키로깅' in progress_values %}
+            <ul class="indented"><a href="lecture2/?table=키로깅&page=1" class="text_change">키로깅 ☑️</a></ul>
+          {% else %}
+            <ul class="indented"><a href="lecture2/?table=키로깅&page=1" class="text_change">키로깅</a></ul>
+          {% endif %}
+
+
+
+         </ul>
+       </details>
+     </div>
+   </div>
+ {% else %}
+   <div class="info2" style="width: 100%;">
+     <div class="info__title" style="padding: 3px;">
+       <details>
+         <summary>후킹 기법</summary>
+         <ul>
+          {% if '키로깅' in progress_values %}
+            <ul class="indented"><a href="lecture2/?table=키로깅&page=1" class="text_change">키로깅 ☑️</a></ul>
+          {% else %}
+            <ul class="indented"><a href="lecture2/?table=키로깅&page=1" class="text_change">키로깅</a></ul>
+          {% endif %}
+        
+
+         </ul>
+       </details>
+     </div>
+   </div>
+ {% endif %}
+ 
+
+
+ 
+<!--  -->
+
+{% if '액세스 토큰을 이용한 권한 상승' in progress_values %}
+<div class="info2" style="width: 100%; background-color: {{ color }};">
+  <div class="info__title" style="padding: 3px;">
+    <details>
+      <summary>권한상승</summary>
+      <ul>
+        <ul class="indented">
+          {% if '액세스 토큰을 이용한 권한 상승' in progress_values %}
+          <a href="lecture2/?table=액세스 토큰을 이용한 권한 상승&page=1" class="text_change">액세스 토큰을 이용한 권한 상승 ☑️</a>
+        {% else %}
+          <a href="lecture2/?table=액세스 토큰을 이용한 권한 상승&page=1" class="text_change">액세스 토큰을 이용한 권한 상승</a>
+        {% endif %}
+        
+        </ul>
+      </ul>
+    </details>
+  </div>
+</div>
+{% else %}
+<div class="info2" style="width: 100%;">
+  <div class="info__title" style="padding: 3px;">
+    <details>
+      <summary>권한상승</summary>
+      <ul>
+        <ul class="indented">
+          {% if '액세스 토큰을 이용한 권한 상승' in progress_values %}
+          <a href="lecture2/?table=액세스 토큰을 이용한 권한 상승&page=1" class="text_change">액세스 토큰을 이용한 권한 상승 ☑️</a>
+        {% else %}
+          <a href="lecture2/?table=액세스 토큰을 이용한 권한 상승&page=1" class="text_change">액세스 토큰을 이용한 권한 상승</a>
+        {% endif %}
+         
+    
+        </ul>
+      </ul>
+    </details>
+  </div>
+</div>
+{% endif %}
+
+  
+  
+  
+<div class="main_category_f" style="margin-top : 20px; background-color: {{color}};">
+    문제풀이   
+  </div>
+  
+
+{% if '핵심원리 문제풀이1' in progress_values and '핵심원리 문제풀이2' in progress_values and '핵심원리 문제풀이3' in progress_values and '핵심원리 문제풀이4' in progress_values%}
+<div class="info2" style="width: 100%; background-color: {{ color }};">
+  <div class="info__title" style="padding: 3px;">
+    <details>
+      <summary>핵심원리 문제풀이</summary>
+      <ul>
+        <ul class="indented">
+
+          {% if '핵심원리 문제풀이1' in progress_values %}
+           <ul class="indented"><a href="핵심원리 문제풀이1" class="text_change">핵심원리 문제풀이1 ☑️</a></ul>
+        {% else %}
+           <ul class="indented"><a href="핵심원리 문제풀이1" class="text_change">핵심원리 문제풀이1</a></ul>
+        {% endif %}
+
+          {% if '핵심원리 문제풀이2' in progress_values %}
+           <ul class="indented"><a href="핵심원리 문제풀이2" class="text_change">핵심원리 문제풀이2 ☑️</a></ul>
+        {% else %}
+           <ul class="indented"><a href="핵심원리 문제풀이2" class="text_change">핵심원리 문제풀이2</a></ul>
+        {% endif %}
+
+          {% if '핵심원리 문제풀이3' in progress_values %}
+           <ul class="indented"><a href="핵심원리 문제풀이3" class="text_change">핵심원리 문제풀이3 ☑️</a></ul>
+        {% else %}
+           <ul class="indented"><a href="핵심원리 문제풀이3" class="text_change">핵심원리 문제풀이3</a></ul>
+        {% endif %}
+	
+          {% if '핵심원리 문제풀이4' in progress_values %}
+           <ul class="indented"><a href="핵심원리 문제풀이4" class="text_change">핵심원리 문제풀이4 ☑️</a></ul>
+        {% else %}
+           <ul class="indented"><a href="핵심원리 문제풀이4" class="text_change">핵심원리 문제풀이4</a></ul>
+        {% endif %}
+
+
+
+        
+        </ul>
+      </ul>
+    </details>
+  </div>
+</div>
+{% else %}
+<div class="info2" style="width: 100%;">
+  <div class="info__title" style="padding: 3px;">
+    <details>
+      <summary>핵심원리 문제풀이</summary>
+      <ul>
+        <ul class="indented">
+
+          {% if '핵심원리 문제풀이1' in progress_values %}
+           <ul class="indented"><a href="핵심원리 문제풀이1" class="text_change">핵심원리 문제풀이1 ☑️</a></ul>
+        {% else %}
+           <ul class="indented"><a href="핵심원리 문제풀이1" class="text_change">핵심원리 문제풀이1</a></ul>
+        {% endif %}
+
+          {% if '핵심원리 문제풀이2' in progress_values %}
+           <ul class="indented"><a href="핵심원리 문제풀이2" class="text_change">핵심원리 문제풀이2 ☑️</a></ul>
+        {% else %}
+           <ul class="indented"><a href="핵심원리 문제풀이2" class="text_change">핵심원리 문제풀이2</a></ul>
+        {% endif %}
+
+          {% if '핵심원리 문제풀이3' in progress_values %}
+           <ul class="indented"><a href="핵심원리 문제풀이3" class="text_change">핵심원리 문제풀이3 ☑️</a></ul>
+        {% else %}
+           <ul class="indented"><a href="핵심원리 문제풀이3" class="text_change">핵심원리 문제풀이3</a></ul>
+        {% endif %}
+	
+          {% if '핵심원리 문제풀이4' in progress_values %}
+           <ul class="indented"><a href="핵심원리 문제풀이4" class="text_change">핵심원리 문제풀이4 ☑️</a></ul>
+        {% else %}
+           <ul class="indented"><a href="핵심원리 문제풀이4" class="text_change">핵심원리 문제풀이4</a></ul>
+        {% endif %}
+
+
+    
+        </ul>
+      </ul>
+    </details>
+  </div>
+ <div class="info__close"></div>
+</div>
+{% endif %}
+  </div>
+  </div>
+  
+  <div class="coulmn_item2">
+    <div class="cardg">
+           <span class="titleg">
+             핵심원리
+           </span>
+         <p class="descg">
+          핵심원리는 악성코드 분석 시 악성코드의 행위를 쉽게 파악하기 위해 프로그래밍의 기초를 배우고 악성코드에 자주 사용되는 기법들을 구현해보는 과정입니다. 
+         </p>
+     </div>
+    
+    <div class="cardk">
+          <div class="card__wrapperk">
+        </div>
+          <div class="card__title"><span class="titleg">강의 진도율</span></div>
+          
+          <div class="card__indicator"><span class="card__indicator-amount"></span>  {{rate}}%</span></div>
+          <div class="card__progress"><progress max="100" value="{{rate}}"></progress></div>
+      </div>
+    </div>
+    </div>
+  
+ </div>
+</div>
+  <!-- Footer -->
+
+<footer class="footer">
+  <div style="background-color: black;">
+    <div class="footer_bottom">
+      <div class="footer-logo">
+        <img src="{% static 'LOGO_remove.png' %}" style="max-width: 10rem;  opacity: 0.5;">
+      </div>
+      <div class="company-miscellaneous">
+        <div class="company-brand-title">
+          <p class="company-title">Best Of the Best 12기</p> 
+          <p class="copyright">
+        Copyright © 2023 MalLaB Inc. All rights reserved.
+          </p>
+        </div> 
+        <p class="copyright">
+          <span>서비스 운영: MalLaB</span> |
+          <span>금천구 서부샛길 606, 대성디폴리스 지식산업센터 A동 27층</span> |
+          <span>이메일: mallab@gmail.com</span> |
+          <span>대표 연락처: 010-0000-0000</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+var elements = document.querySelectorAll('.info2, details');
+
+elements.forEach(function(element) {
+    element.addEventListener('click', function(event) {
+        var details = this.querySelector('details');
+
+        if (!details) {
+            details = this.closest('details');
+        }
+
+        if (details) {
+            details.open = !details.open;
+        }
+    });
+});
+</script>
+  <script>
+  // Modal Image Gallery
+  function onClick(element) {
+    document.getElementById("img01").src = element.src;
+    document.getElementById("modal01").style.display = "block";
+    var captionText = document.getElementById("caption");
+    captionText.innerHTML = element.alt;
+  }
+  
+  
+  // Toggle between showing and hiding the sidebar when clicking the menu icon
+  var mySidebar = document.getElementById("mySidebar");
+  
+  function w3_open() {
+    if (mySidebar.style.display === 'block') {
+      mySidebar.style.display = 'none';
+    } else {
+      mySidebar.style.display = 'block';
+    }
+  }
+  
+  // Close the sidebar with the close button
+  function w3_close() {
+      mySidebar.style.display = "none";
+  }
+  </script>
+
+
+
+
+
+
+{% endblock %}

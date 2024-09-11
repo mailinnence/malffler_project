@@ -1,0 +1,355 @@
+{% extends "bob/header.html" %}
+
+
+
+
+
+{% block content %}
+
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'web/css/exe.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'web/css/footer.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@600&display=swap" rel="stylesheet">
+
+
+<body style="background-color: #D7DAE7;">
+<div id="wrapper">
+<!-- 문제검색창 -->
+<div class="search">
+    <form class="form" method="post" action="">
+        {% csrf_token %}
+        <button>
+            <svg width="17" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="search">
+                <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+        </button>
+        <input class="input" placeholder="찾고 싶은 문제를 검색해주세요." required="" type="text" name="search">
+        <button class="reset" type="reset">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </form>
+  </div>
+
+<div class="introduce">
+            <div class="table">
+                <div class="radio-input parent">
+                  <div class="child_main"><h4>분야</h4></div>      
+                  <div class="child">
+                  {% if search_filed  %}
+                  <input value="" name="value-radio" id="All" type="radio" name="search_filed" checked="checked">
+                  <label for="All">All</label>   
+                  {% else %}    
+                  <input  name="value-radio" id="All" type="radio" checked="checked" >
+                  <label for="All">All</label>   
+                  {% endif %}
+                </div>
+                <div class="child">
+                  {% if search_filed == 'InfoStealer' %}
+                  <input value="InfoStealer" name="value-radio" id="InfoStealer" type="radio" name="search_filed" checked>
+                  <label for="InfoStealer">InfoStealer</label>   
+                  {% else %}    
+                  <input value="InfoStealer" name="value-radio" id="InfoStealer" type="radio" name="search_filed">
+                  <label for="InfoStealer">InfoStealer</label>   
+                  {% endif %}
+                </div>
+                <div class="child">
+                  {% if search_filed == 'RAT' %}
+                  <input value="RAT" name="value-radio" id="RAT" type="radio" name="search_filed" checked>
+                  <label for="RAT">RAT</label>   
+                  {% else %}    
+                  <input value="RAT" name="value-radio" id="RAT" type="radio" name="search_filed">
+                  <label for="RAT">RAT</label>   
+                  {% endif %}
+                </div>
+                <div class="child">
+                  {% if search_filed == 'Downloader/Dropper' %}
+                  <input value="Downloader/Dropper" name="value-radio" id="Downloader/Dropper" type="radio" name="search_filed" checked>
+                  <label for="Downloader/Dropper">Downloader / Dropper</label>   
+                  {% else %}    
+                  <input value="Downloader/Dropper" name="value-radio" id="Downloader/Dropper" type="radio" name="search_filed">
+                  <label for="Downloader/Dropper">Downloader / Dropper</label>   
+                  {% endif %}
+                </div>
+                <div class="child">
+                  {% if search_filed == 'Ransomware' %}
+                  <input value="Ransomware" name="value-radio" id="Ransomware" type="radio" name="search_filed" checked>
+                  <label for="Ransomware">Ransomware</label>   
+                  {% else %}    
+                  <input value="Ransomware" name="value-radio" id="Ransomware" type="radio" name="search_filed">
+                  <label for="Ransomware">Ransomware</label>   
+                  {% endif %}
+                </div>
+                <div class="child">
+                  {% if search_filed == 'Backdoor' %}
+                  <input value="Backdoor" name="value-radio" id="Backdoor" type="radio" name="search_filed" checked>
+                  <label for="Backdoor">Backdoor</label>   
+                  {% else %}    
+                  <input value="Backdoor" name="value-radio" id="Backdoor" type="radio" name="search_filed">
+                  <label for="Backdoor">Backdoor</label>   
+                  {% endif %}
+                </div>
+                <div class="child">
+                  {% if search_filed == 'Scenario' %}
+                  <input value="Scenario" name="value-radio" id="Scenario" type="radio" name="search_filed" checked>
+                  <label for="Scenario">Scenario</label>   
+                  {% else %}    
+                  <input value="Scenario" name="value-radio" id="Scenario" type="radio" name="search_filed">
+                  <label for="Scenario">Scenario</label>   
+                  {% endif %}
+                </div>
+                </div>
+            </div>
+                
+            <script>
+                // 라디오 버튼을 클릭할 때 발생하는 이벤트 리스너
+                document.addEventListener('DOMContentLoaded', function() {
+                  var radioButtons = document.querySelectorAll('input[type="radio"][name="value-radio"]');
+              
+                  radioButtons.forEach(function(radioButton) {
+                    radioButton.addEventListener('click', function() {
+                      var selectedValue = radioButton.value;
+                      // 선택한 값을 GET 요청으로 전달
+                      window.location.href = '?search_filed=' + selectedValue;
+                    });
+                  });
+                });
+              </script>
+              
+        </p>
+            <div class="table">
+                <form method="post" action="" id="search-form">  <!-- 폼 엘리먼트에 id 추가 -->
+                    {% csrf_token %}
+                    <div class="radio-input parent">
+                        <div class="child_main"><h4>난이도</h4></div>       
+         <!-- <div class="child">
+  {% if search_term %}
+  <input value="Print_out_all_filed" name="search" id="All-level" type="radio" checked="checked">
+  <label for="All-level"> All</label>
+  {% else %}    
+  <input value="Print_out_all_filed" name="search" id="All-level" type="radio" checked="checked">
+  <label for="All-level">All</label>
+  {% endif %}
+  </div> -->
+                        <div class="child">
+                        {% if search_term == 'Print_out_level1__questions' %}
+                        <input value="Print_out_level1__questions" name="search" id="value-1-level" type="radio" checked>
+                        <label for="value-1-level">1</label>
+                        {% else %}
+                        <input value="Print_out_level1__questions" name="search" id="value-1-level" type="radio">
+                        <label for="value-1-level">1</label>
+                        {% endif %}
+                        </div>
+                        <div class="child">
+                        {% if search_term == 'Print_out_level2__questions' %}
+                        <input value="Print_out_level2__questions" name="search" id="value-2-level" type="radio" checked>
+                        <label for="value-2-level">2</label>
+                        {% else %}
+                        <input value="Print_out_level2__questions" name="search" id="value-2-level" type="radio">
+                        <label for="value-2-level">2</label>
+                        {% endif %}
+                        </div>
+                        <div class="child">
+                        {% if search_term == 'Print_out_level3__questions' %}
+                        <input value="Print_out_level3__questions" name="search" id="value-3-level" type="radio" checked>
+                        <label for="value-3-level">3</label>
+                        {% else %}
+                        <input value="Print_out_level3__questions" name="search" id="value-3-level" type="radio">
+                        <label for="value-3-level">3</label>
+                        {% endif %}
+                        </div>
+                        <div class="child">
+                        {% if search_term == 'Print_out_level4__questions' %}
+                        <input value="Print_out_level4__questions" name="search" id="value-4-level" type="radio" checked>
+                        <label for="value-4-level">4</label>
+                        {% else %}
+                        <input value="Print_out_level4__questions" name="search" id="value-4-level" type="radio">
+                        <label for="value-4-level">4</label>
+                        {% endif %}
+                        </div>
+                        <div class="child">
+                        {% if search_term == 'Print_out_level5__questions' %}
+                        <input value="Print_out_level5__questions" name="search" id="value-5-level" type="radio" checked>
+                        <label for="value-5-level">5</label>
+                        {% else %}
+                        <input value="Print_out_level5__questions" name="search" id="value-5-level" type="radio">
+                        <label for="value-5-level">5</label>
+                        {% endif %}
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                    $('input[name="search"]').on('change', function () {
+                        // 모든 라디오 버튼에 대한 스타일 초기화
+                        $('.radio-item label').removeClass('checked');
+        
+                        // 선택한 라디오 버튼에 대한 스타일 추가
+                        if ($(this).is(':checked')) {
+                            $(this).next('label').addClass('checked');
+                        }
+        
+                        // 폼 제출
+                        $('#search-form').submit();
+                    });
+                });
+            </script>
+
+            
+
+
+
+        </p>
+</div>
+
+<!-- 문제 창 -->
+
+<table class="table33">
+  {% for problem in question_list %}
+  {% if forloop.first or forloop.counter0|divisibleby:3 %}
+  <tr>
+  {% endif %}
+  <td>
+      <div class="exe">
+          <div class="cookie-card">
+              <h5><span class="title td_content">{{ problem.problemTitle }}</span></h5>
+              <p class="description td_content"><h7>{{ problem.problemInfo }}</h7></p>
+               <!-- <p class="description">{{ problem.sha256 }}</p> -->
+              <div class="actions td_content">
+                  <div class="pref">
+                      난이도 : {{ problem.level }}
+                  </div>
+                  <div class="pref">
+                      {{ problem.Field }}
+                  </div>
+                  <a href="/problem/?table={{ problem.problemTitle }}"> 
+                      <button class="accept">
+                          문제풀기
+                      </button>
+                  </a>
+              </div>
+          </div>
+      </div>
+  </td>
+  {% if forloop.last or forloop.counter|divisibleby:3 %}
+  </tr>
+  {% endif %}
+  {% endfor %}
+</table>                     
+
+<!-- 페이징처리 시작 -->
+<div class="paging" style="color:#737373;">
+    <ul class="pagination justify-content-center">
+        <!-- 이전페이지 -->
+        {% if question_list.has_previous %}
+            <a class="page-link btn-type" href="?page={{ question_list.previous_page_number }}">이전</a>
+        {% else %}
+            <span class="page-link btn-type" aria-disabled="true">이전</span>
+        {% endif %}
+        <!-- 페이지리스트 -->
+        {% for page_number in question_list.paginator.page_range %}
+        {% if page_number == question_list.number %}
+    
+            <span class="page-link" style="font-size:20px ;font-weight: 600; color: black;">{{ page_number }}</span>
+    
+        {% else %}
+
+            <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+
+        {% endif %}
+        {% endfor %}
+        <!-- 다음페이지 -->
+        {% if question_list.has_next %}
+            <a class="page-link btn-type" href="?page={{ question_list.next_page_number }}">다음</a>
+
+        {% else %}
+            <span class="page-link btn-type"  aria-disabled="true">다음</span>
+    
+        {% endif %}
+    </ul>
+</div>
+</div>
+
+
+
+
+
+<footer class="footer" style="position: relative; transform: translateY(-100%);">
+  <div style="background-color: black;">
+    <div class="footer_bottom">
+      <div class="footer-logo">
+        <img src="{% static 'LOGO_remove.png' %}" style="max-width: 10rem;  opacity: 0.5;">
+      </div>
+      <div class="company-miscellaneous">
+        <div class="company-brand-title">
+          <p class="company-title">Best Of the Best 12기</p> 
+          <p class="copyright">
+        Copyright © 2023 MalLaB Inc. All rights reserved.
+          </p>
+        </div> 
+        <p class="copyright">
+          <span>서비스 운영: MalLaB</span> |
+          <span>금천구 서부샛길 606, 대성디폴리스 지식산업센터 A동 27층</span> |
+          <span>이메일: mallab@gmail.com</span> |
+          <span>대표 연락처: 010-0000-0000</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+
+<script>
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+
+// Toggle between showing and hiding the sidebar when clicking the menu icon
+var mySidebar = document.getElementById("mySidebar");
+
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+  } else {
+    mySidebar.style.display = 'block';
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+    mySidebar.style.display = "none";
+}
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 현재 페이지 경로 가져오기
+      var currentPath = window.location.pathname;
+      
+      // '/exe/'로 시작하는 페이지에서만 폰트 변경
+      if (currentPath.startsWith('exe/')) {
+        var h4Elements = document.querySelectorAll('*');
+        h4Elements.forEach(function(h4Element) {
+          h4Element.style.fontFamily = 'Noto Sans KR', sans-serif;; // 또는 다른 원하는 폰트로 변경
+        });
+      }
+    });
+  </script>
+
+
+
+
+{% endblock %}

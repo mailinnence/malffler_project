@@ -1,0 +1,329 @@
+{% extends "bob/header.html" %}
+
+
+
+
+
+{% block content %}
+
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'web/css/lecture.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'web/css/footer.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@600&display=swap" rel="stylesheet">
+
+
+<div class="radio-input">
+</div>
+
+<script>
+  // 라디오 버튼의 변경을 감지하는 이벤트 리스너 추가
+  document.querySelectorAll('input[name="value-radio"]').forEach(function(radio) {
+      radio.addEventListener('change', function() {
+          // 선택한 라디오 버튼의 값에 따라 다른 주소로 이동
+          if (radio.value === "value-1") {
+              window.location.href = "/education0"; 
+          } else if (radio.value === "value-2") {
+              window.location.href = "/education1";
+          } else if (radio.value === "value-3") {
+              window.location.href = "/education2"; 
+          }
+          else if (radio.value === "value-4") {
+              window.location.href = "/education3"; // 제작 교육 페이지로 이동
+          }
+      });
+  });
+</script>
+  
+
+<div id="wrapper">  
+<div class="card">
+  <p style="font-weight: 900; font-size: 20px; padding-left: 20px;">⚠️ 경고</p>
+  <p class="alert" style="padding-left: 20px;">MalFFleR는 합법적인 보안 연구 및 교육 목적으로만 사용되어야 합니다.</p><p class="alert" style="padding-left: 20px">악의적인 목적으로 이를 활용하거나 다른 사람에게 피해를 주려는 행위는 불법이며 정보통신망법 48조에 의거하여 적절한 법적 처벌을 받을 수 있습니다.</p>
+</div>
+  
+  
+  
+  <div class="coulmn">
+    <div class="coulmn_item1">
+  
+  <div class="card2">
+    <!-- <div class="info2">
+  
+      <div class="info__title">윤리교육</div>
+      <div class="info__close"></div>
+  
+      
+  </div> -->
+
+
+  
+
+  {% if '1단계' in progress_values and '2단계' in progress_values and '3단계' in progress_values and '4단계' in progress_values %}
+  <div class="info2" style="width: 100%; background-color: {{ color }};">
+    <div class="info__title" style="padding: 3px;">
+      <details>
+        <summary>단계별 교육</summary>
+        <ul>
+          {% if '1단계' in progress_values %}
+          <ul class="indented"><a href="lecture3/?table=1단계&page=1" class="text_change">1단계 - GoldDragon ☑️</a></ul>
+        {% else %}
+          <ul class="indented"><a href="lecture3/?table=1단계&page=1" class="text_change">1단계 - GoldDragon</a></ul>
+        {% endif %}
+        
+        {% if '2단계' in progress_values %}
+          <ul class="indented"><a href="lecture3/?table=2단계&page=1" class="text_change">2단계 - DarkComet ☑️</a></ul>
+        {% else %}
+          <ul class="indented"><a href="lecture3/?table=2단계&page=1" class="text_change">2단계 - DarkComet</a></ul>
+        {% endif %}
+        
+        {% if '3단계' in progress_values %}
+          <ul class="indented"><a href="lecture3/?table=3단계&page=1" class="text_change">3단계 - AgentTesla ☑️</a></ul>
+        {% else %}
+          <ul class="indented"><a href="lecture3/?table=3단계&page=1" class="text_change">3단계 - AgentTesla</a></ul>
+        {% endif %}
+        
+        {% if '4단계' in progress_values %}
+          <ul class="indented"><a href="lecture3/?table=4단계&page=1" class="text_change">4단계 - Wannacry ☑️</a></ul>
+        {% else %}
+          <ul class="indented"><a href="lecture3/?table=4단계&page=1" class="text_change">4단계 - Wannacry</a></ul>
+        {% endif %}
+        
+        </ul>
+      </details>
+    </div>
+    <div class="info__close"></div>
+  </div>
+{% else %}
+  <div class="info2">
+    <div class="info__title" style="padding: 3px;">
+      <details>
+        <summary>단계별 교육</summary>
+        <ul>
+          {% if '1단계' in progress_values %}
+          <ul class="indented"><a href="lecture3/?table=1단계&page=1" class="text_change">1단계 - GoldDragon ☑️</a></ul>
+        {% else %}
+          <ul class="indented"><a href="lecture3/?table=1단계&page=1" class="text_change">1단계 - GoldDragon</a></ul>
+        {% endif %}
+        
+        {% if '2단계' in progress_values %}
+          <ul class="indented"><a href="lecture3/?table=2단계&page=1" class="text_change">2단계 - DarkComet ☑️</a></ul>
+        {% else %}
+          <ul class="indented"><a href="lecture3/?table=2단계&page=1" class="text_change">2단계 - DarkComet</a></ul>
+        {% endif %}
+        
+        {% if '3단계' in progress_values %}
+          <ul class="indented"><a href="lecture3/?table=3단계&page=1" class="text_change">3단계 - AgentTesla ☑️</a></ul>
+        {% else %}
+          <ul class="indented"><a href="lecture3/?table=3단계&page=1" class="text_change">3단계 - AgentTesla</a></ul>
+        {% endif %}
+        
+        {% if '4단계' in progress_values %}
+          <ul class="indented"><a href="lecture3/?table=4단계&page=1" class="text_change">4단계 - Wannacry ☑️</a></ul>
+        {% else %}
+          <ul class="indented"><a href="lecture3/?table=4단계&page=1" class="text_change">4단계 - Wannacry</a></ul>
+        {% endif %}
+        
+        </ul>
+      </details>
+    </div>
+    <div class="info__close"></div>
+  </div>
+{% endif %}
+
+
+
+
+{% if '닷넷' in progress_values and 'go' in progress_values and 'rust' in progress_values and '문서형' in progress_values %}
+
+<div class="info2" style="width: 100%; background-color: {{ color }};">
+      <div class="info__title" style="padding:3px;">
+          <details>
+              <summary>기타 교육</summary>
+              <ul>
+                  
+                {% if '닷넷' in progress_values %}
+                <ul class="indented"><a href="lecture3/?table=닷넷&page=1" class="text_change">.net ☑️</a></ul>
+              {% else %}
+                <ul class="indented"><a href="lecture3/?table=닷넷&page=1" class="text_change">.net</a></ul>
+              {% endif %}
+              
+              {% if 'go' in progress_values %}
+                <ul class="indented"><a href="lecture3/?table=go&page=1" class="text_change">Go ☑️</a></ul>
+              {% else %}
+                <ul class="indented"><a href="lecture3/?table=go&page=1" class="text_change">Go</a></ul>
+              {% endif %}
+
+              {% if '문서형' in progress_values %}
+                <ul class="indented"><a href="lecture3/?table=문서형&page=1" class="text_change">문서형 ☑️</a></ul>
+              {% else %}
+                <ul class="indented"><a href="lecture3/?table=문서형&page=1" class="text_change">문서형</a></ul>
+              {% endif %}
+              
+                  
+              </ul>
+          </details>
+      </div>
+      <div class="info__close"></div>
+  </div>
+  {% else %}
+  <div class="info2">
+    <div class="info__title" style="padding:3px;">
+        <details>
+            <summary>기타 교육</summary>
+            <ul>
+                
+              {% if '닷넷' in progress_values %}
+              <ul class="indented"><a href="lecture3/?table=닷넷&page=1" class="text_change">.net ☑️</a></ul>
+            {% else %}
+              <ul class="indented"><a href="lecture3/?table=닷넷&page=1" class="text_change">.net</a></ul>
+            {% endif %}
+            
+            {% if 'go' in progress_values %}
+              <ul class="indented"><a href="lecture3/?table=go&page=1" class="text_change">Go ☑️</a></ul>
+            {% else %}
+              <ul class="indented"><a href="lecture3/?table=go&page=1" class="text_change">Go</a></ul>
+            {% endif %}
+            
+            {% if '문서형' in progress_values %}
+              <ul class="indented"><a href="lecture3/?table=문서형&page=1" class="text_change">문서형 ☑️</a></ul>
+            {% else %}
+              <ul class="indented"><a href="lecture3/?table=문서형&page=1" class="text_change">문서형</a></ul>
+            {% endif %}
+            
+                
+            </ul>
+        </details>
+    </div>
+    <div class="info__close"></div>
+</div>
+  
+  
+  
+  {% endif %}
+
+  
+  </div>
+  
+  </div>
+  
+  
+  <div class="coulmn_item2">
+    
+    
+  <!--  
+    <div class="cardg">
+       <div class="contentg">
+         <a href="#">
+           <span class="titleg">
+             분석 교육
+           </span>
+         </a>
+     
+         <p class="descg">
+           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
+           dolores, possimus pariatur animi temporibus nesciunt praesentium 
+         </p>
+     
+       </div>
+     </div>
+    -->
+    
+    
+    
+
+    <div class="coulmn_item2">
+      <div class="cardg">
+             <span class="titleg">
+               분석강의
+             </span>
+           <p class="descg">
+            분석강의는 7가지 악성코드에 대한 분석 방법을 탐구하고 기초 강의, 핵심 원리에서 탐구한 내용을 바탕으로 정적/동적 분석 방법을 가상화 환경이용하여 적용해볼 수 있습니다.
+           </p>
+       </div>
+      <div class="cardk">
+            <div class="card__wrapperk"></div>
+            <div class="card__title"><span class="titleg">강의 진도율</span></div>
+            
+            <div class="card__indicator"><span class="card__indicator-amount"></span>  {{ rate }}%</span></div>
+            <div class="card__progress"><progress max="100" value="{{rate}}"></progress></div>
+            </div>
+          </div>
+        <div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer" style="position: relative; transform: translateY(-100%);">
+  <div style="background-color: black;">
+    <div class="footer_bottom">
+      <div class="footer-logo">
+        <img src="{% static 'LOGO_remove.png' %}" style="max-width: 10rem;  opacity: 0.5;">
+      </div>
+      <div class="company-miscellaneous">
+        <div class="company-brand-title">
+          <p class="company-title">Best Of the Best 12기</p> 
+          <p class="copyright">
+        Copyright © 2023 MalLaB Inc. All rights reserved.
+          </p>
+        </div> 
+        <p class="copyright">
+          <span>서비스 운영: MalLaB</span> |
+          <span>금천구 서부샛길 606, 대성디폴리스 지식산업센터 A동 27층</span> |
+          <span>이메일: mallab@gmail.com</span> |
+          <span>대표 연락처: 010-0000-0000</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+   
+<script>
+var elements = document.querySelectorAll('.info2, details');
+
+elements.forEach(function(element) {
+    element.addEventListener('click', function(event) {
+        var details = this.querySelector('details');
+
+        if (!details) {
+            details = this.closest('details');
+        }
+
+        if (details) {
+            details.open = !details.open;
+        }
+    });
+});
+</script>
+
+  <script>
+  // Modal Image Gallery
+  function onClick(element) {
+    document.getElementById("img01").src = element.src;
+    document.getElementById("modal01").style.display = "block";
+    var captionText = document.getElementById("caption");
+    captionText.innerHTML = element.alt;
+  }
+  
+  
+  // Toggle between showing and hiding the sidebar when clicking the menu icon
+  var mySidebar = document.getElementById("mySidebar");
+  
+  function w3_open() {
+    if (mySidebar.style.display === 'block') {
+      mySidebar.style.display = 'none';
+    } else {
+      mySidebar.style.display = 'block';
+    }
+  }
+  
+  // Close the sidebar with the close button
+  function w3_close() {
+      mySidebar.style.display = "none";
+  }
+  </script>
+
+{% endblock %}

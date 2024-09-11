@@ -1,0 +1,205 @@
+{% extends "bob/study_header.html" %}
+
+
+
+
+
+{% block content %}
+
+
+{% load static %}
+<style>
+  /* iframe을 선택하고 테두리 스타일을 none(없음)으로 설정합니다. */
+  iframe {
+      border: none;
+      
+  }
+
+        /* 우측 정렬을 위한 스타일 설정 */
+        .pagination {
+            text-align: right;
+        }
+
+      
+</style>
+
+<link rel="stylesheet" type="text/css" href="{% static 'web/css/lecture_study.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@600&display=swap" rel="stylesheet">
+
+
+<div class="coulmn">
+  <div class="card2">
+    <div class="contentg" >
+      <!-- 사진이 들어간는 곳 -->
+      <iframe src="{% static '42656c6f-4399-41d5-8a37-d08f86d2a4b0_Export-1b8983b0-1030-46b6-9dff-103738ee5bc3\악성코드 분석의 종류 5e240d51cd2e4417bdec408d5a1f3cb3.html' %}" style="width: 100%; height: 585px;" ></iframe>
+    </div>
+
+    
+
+
+    
+
+    
+  </div>
+    <div class="card2">
+      <div class="contentg" >
+        <iframe src="{% static '6dda7721-2285-4935-bcc6-30fb0c06bfff_Export-cf8b058a-ea0e-4375-8f2d-7b644aaca61e\강의자료(어셈블리 및 디버깅 - 컴퓨터 기초) bc62e96bbfbe48c2b7544740cb6dd11a.html' %}" style="width: 100%; height: 585px;" ></iframe>
+        <br>
+
+
+
+      <!-- <div class="pagination">
+        
+        
+        <span>page {{page}} / {{result}}</span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button id="previous-button"><</button>
+        <button id="next-button">></button>
+        <button id="openWindowButton">MPT</button>
+    </div> -->
+
+
+
+    
+      <!-- 버튼 -->
+      <div class="button-container">
+<!-- Django 템플릿 -->
+<div class="pagination">
+
+
+<div class="button">
+  <span>page {{page}} / {{result}}</span>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button id="previous-button"><</button>
+<button id="next-button">></button>
+<button id="openWindowButton">&nbsp;&nbsp;GPT&nbsp;&nbsp;</button>
+<button id="openVirtButton">&nbsp;&nbsp;가상화&nbsp;&nbsp;</button>
+</div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+</div></div>
+
+       
+   
+
+      </div>
+        
+  <script>
+    document.getElementById('openWindowButton').addEventListener('click', function() {
+        // 새 창을 열기 위한 URL을 여기에 입력
+        var newWindowURL = 'http://127.0.0.1:8000//mpt/?table={{file}}&lecture=3';
+        // var newWindowURL = 'http://192.168.3.135:8000/mpt/?table={{file}}';  // 새 창을 열고자 하는 웹 페이지 URL로 변경
+        var windowWidth = 800;  // 창의 너비를 설정 (픽셀 단위로)
+        var windowHeight = 600;  // 창의 높이를 설정 (픽셀 단위로)
+    
+        // 새 창을 엽니다. 너비와 높이를 설정합니다.
+        window.open(newWindowURL, '_blank', 'width=' + windowWidth + ', height=' + windowHeight);
+    });
+    document.getElementById('openVirtButton').addEventListener('click', function() {
+      var fileValue = "{{ file }}";
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', '/virtualize/?file=' + encodeURIComponent(fileValue), true);
+      xhr.onreadystatechange = function() {
+          if (xhr.readyState === 4) {
+              if (xhr.status === 200) {
+                  // 서버 응답을 받았을 때의 로직을 작성
+                  console.log('Virtualize 함수가 성공적으로 실행되었습니다.');
+
+                  // 서버에서 전송한 파일 데이터를 블롭으로 생성
+                  var blob = new Blob([xhr.response], { type: 'application/octet-stream' });
+
+                  // 브라우저에서 파일 다운로드를 위한 링크 생성
+                  var link = document.createElement('a');
+                  link.href = window.URL.createObjectURL(blob);
+                  link.download = 'pve-spice.vv';
+
+                  // 링크를 클릭하여 파일 다운로드
+                  link.click();
+              } else {
+                  // 오류 처리
+                  console.error('Virtualize 함수 실행 중 오류가 발생했습니다.');
+              }
+          }
+      };
+      xhr.responseType = 'arraybuffer';  // 이 부분이 추가되어야 합니다.
+      xhr.send();
+    });
+  </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      // "전장으로" 버튼에 클릭 이벤트 리스너를 추가합니다.
+      document.querySelector('#previous-button').addEventListener('click', moveToPrevious);
+  
+      // "다음장으로" 버튼에 클릭 이벤트 리스너를 추가합니다.
+      document.querySelector('#next-button').addEventListener('click', moveToNext);
+  
+      function moveToPrevious() {
+          // 현재 페이지의 URL을 가져옵니다.
+          let currentUrl = window.location.href;
+  
+          // URL에서 "table"과 "value" 매개변수를 추출하고 현재 값을 얻습니다.
+          let url = new URL(currentUrl);
+          let currentTable = url.searchParams.get("table");
+          let currentValue = parseInt(url.searchParams.get("page"));
+  
+          // 값이 없을 경우 기본값을 설정할 수 있습니다.
+          if (isNaN(currentValue)) {
+              currentValue = 0;
+          }
+  
+          // 현재 값이 -1 미만이면 "첫 페이지 입니다" 메시지를 표시하고 더 이상 진행하지 않습니다.
+          if (currentValue <= 1) {
+              alert("첫 페이지 입니다");
+              return;
+          }
+  
+          // 값을 감소시킵니다.
+          let newValue = currentValue - 1;
+  
+          // 새로운 URL을 만듭니다.
+          let newUrl = `${url.pathname}?table=${currentTable}&page=${newValue}`;
+  
+          // 새 URL로 이동합니다.
+          window.location.href = newUrl;
+      }
+  
+      function moveToNext() {
+          // 현재 페이지의 URL을 가져옵니다.
+          let currentUrl = window.location.href;
+  
+          // URL에서 "table"과 "value" 매개변수를 추출하고 현재 값을 얻습니다.
+          let url = new URL(currentUrl);
+          let currentTable = url.searchParams.get("table");
+          let currentValue = parseInt(url.searchParams.get("page"));
+  
+          // 값이 없을 경우 기본값을 설정할 수 있습니다.
+          if (isNaN(currentValue)) {
+              currentValue = 0;
+          }
+  
+          // 값을 증가시킵니다.
+          let newValue = currentValue + 1;
+  
+          // 새로운 URL을 만듭니다.
+          let newUrl = `${url.pathname}?table=${currentTable}&page=${newValue}`;
+  
+          // 새 URL로 이동합니다.
+          window.location.href = newUrl;
+      }
+  });
+  </script>
+  
+  
+   
+    
+{% endblock %}

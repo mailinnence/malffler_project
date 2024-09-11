@@ -1,0 +1,93 @@
+
+{% extends "bob/mpt_header.html" %}
+
+
+
+
+
+{% block content %}
+<body style="background-color: #D7DAE7;">
+
+
+    
+<br><br><br>
+<form method="post"  action="">
+    {% csrf_token %}
+<div class="answer">
+    <div class="card">
+      <!-- <div class="chat-header">댓글</div> -->
+        <div class="chat-input">
+            <input type="text" class="message-input" name="answer" placeholder="Type your message here">
+            <input hidden name="table" value="{{table}}">
+            <input hidden name="lecture" value="{{lecture}}">
+          
+            <button class="send-button">질문하기</button>
+        </div>
+      </div>
+  </div>    
+</form>    
+
+<div id="waiting-message" style="display: none;">
+<form>
+  <div class="answer">
+  <div class="card">
+    <!-- <div class="chat-header">댓글</div> -->
+      <div class="chat-input">
+       
+        악성코드 분석에서 **정적 분석**(Static Analysis)은 악성코드의 실행 없이 파일이나 프로그램의 코드를 분석하는 방법입니다. 정적 분석에서는 프로그램을 실제로 실행하지 않기 때문에, 악성코드가 실행되었을 때 발생할 수 있는 부작용을 피할 수 있습니다. 주요 정적 분석 기법으로는 다음과 같은 것들이 있습니다:
+
+        1. **파일 구조 분석**: 악성코드 파일의 형식과 구조를 파악합니다. 예를 들어, PE (Portable Executable) 파일의 헤더 정보를 분석하여 파일의 섹션, 진입점, 메타데이터 등을 확인할 수 있습니다.
+        
+        2. **문자열 분석**: 악성코드 파일에서 포함된 문자열을 추출하여 분석합니다. 이는 악성코드가 사용하는 도메인, URL, 파일 경로, API 호출 등을 알아내는 데 유용할 수 있습니다.
+        
+        3. **디스어셈블링**: 바이너리 코드를 어셈블리어로 변환하여 코드를 분석합니다. 이를 통해 악성코드가 실제로 어떤 명령을 수행하는지 파악할 수 있습니다.
+        
+        4. **코드 서명 및 인증서 분석**: 악성코드 파일에 포함된 디지털 서명이나 인증서를 분석하여 출처나 신뢰성을 확인합니다.
+        
+        5. **패커 및 암호화 분석**: 악성코드가 패킹(packing) 또는 암호화(encryption) 기술을 사용한 경우, 이를 풀어내어 원본 코드를 분석합니다.
+        
+        정적 분석은 실행 없이 악성코드의 특성과 동작을 파악하는 데 유용하지만, 코드 난독화(obfuscation) 또는 패킹이 된 경우 분석이 어려워질 수 있습니다. 이럴 때는 **동적 분석**(Dynamic Analysis)을 통해 보완할 수 있습니다..
+        
+        
+      </div>
+    </div>
+</div>    
+</form>    
+</div>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+      const form = document.querySelector("form");
+      const waitingMessage = document.getElementById("waiting-message");
+
+      form.addEventListener("submit", function () {
+          // 폼이 제출될 때 메시지를 표시
+          waitingMessage.style.display = "block";
+      });
+
+      // 서버 응답을 받았을 때, 메시지를 숨김
+      // 예를 들어, 서버 응답 후에 메시지를 숨기려면 이 부분을 수정해야 합니다.
+  });
+</script>
+
+{% if t_text %}
+<form>
+    {% csrf_token %}
+<div class="answer">
+    <div class="card">
+      <!-- <div class="chat-header">댓글</div> -->
+        <div class="chat-input">
+        
+            {{ t_text }}
+      
+        </div>
+      </div>
+  </div>    
+</form> 
+
+</body>
+
+{% endif %}
+     
+{% endblock %}
