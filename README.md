@@ -9,7 +9,7 @@
 
 깃허브 자체 다운로드로는 압축파일에서 오류가 납니다. 
 
-git clone git@github.com:mailinnence/malffler_project.git
+##### git clone git@github.com:mailinnence/malffler_project.git
 
 
 
