@@ -29,14 +29,10 @@
 
 
 
-### 설치 ###
-pip install django
+### 테스트 버전 ###
+해당 프로젝트의 테스트 버전 경우 바로 실행할 수 있습니다.
 
-pip install openai (openai 버전에 따라서 다운그레이드 하여야 할 수 있습니다.)
-
-pip install beautifulsoup4
-
-pip install whitenoise
+파이썬이 설치되어 있다는 전제하에 malffler_최종_test_Ver 안에 있는 run.bat 파일을 실행하시면 됩니다.
 
 
 
